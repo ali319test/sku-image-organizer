@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SKU Image Organizer</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; }
+    input, button { padding: 10px; margin: 5px 0; width: 100%; }
+    .flash { background: #d4edda; color: #155724; padding: 10px; margin-bottom: 15px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1>SKU Image Organizer</h1>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <form method="POST" enctype="multipart/form-data">
+    <label>Upload Image:</label><br />
+    <input type="file" name="image" accept="image/*" required /><br />
+
+    <label>SKU (e.g. CH25SS812N846AW):</label><br />
+    <input type="text" name="sku" required /><br />
+
+    <label>Folder (e.g. RTW):</label><br />
+    <input type="text" name="folder" required /><br />
+
+    <button type="submit">Save Image</button>
+  </form>
+</body>
+</html>
